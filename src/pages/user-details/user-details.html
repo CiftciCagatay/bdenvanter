@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ user.name }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="getDatas()" ion-button icon-only>
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-6 col-lg-4>
+        <user-details-card
+          [u_id]="u_id"
+          [index]="user_index"
+          (userDeleted)="onUserDeleted()"
+        ></user-details-card>
+      </ion-col>
+
+      <ion-col *ngFor="let computer of computers; let i = index" col-12 col-md-6 col-lg-4>
+        <computer-details-card
+          [computer]="computer"
+          [index]="i"
+        ></computer-details-card>
+      </ion-col>
+
+      <ion-col *ngFor="let printer of printers; let i = index" col-12 col-md-6 col-lg-4>
+        <printer-details-card
+          [printer]="printer"
+          [index]="i"
+        ></printer-details-card>
+      </ion-col>
+
+      <ion-col *ngFor="let br of barcodeReaders; let i = index" col-12 col-md-6 col-lg-4>
+        <barcode-reader-details-card
+          [barcodeReader]="br"
+          [index]="i"
+        ></barcode-reader-details-card>
+      </ion-col>
+
+      <ion-col *ngFor="let bp of barcodePrinters; let i = index" col-12 col-md-6 col-lg-4>
+        <barcode-printer-details-card
+          [barcodePrinter]="bp"
+          [index]="i"
+        ></barcode-printer-details-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab bottom right>
+    <button (click)="showAdditionAlert()" color="danger" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

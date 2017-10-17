@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-header color="primary" ion-item>
+    <ion-icon name="barcode" item-start></ion-icon>
+    Barkod Yazıcı
+    <button (click)="openBarcodePrinterPage()" ion-button icon-only clear item-end>
+      <ion-icon color="light" name="create"></ion-icon>
+    </button>
+
+    <button (click)="showBarcodePrinterDeletionWarning()" ion-button icon-only clear item-end>
+      <ion-icon color="light" name="trash"></ion-icon>
+    </button>
+  </ion-card-header>
+
+  <ion-card-content style="margin-top: 5px;">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>Model</ion-label>
+        <ion-label>{{ barcodePrinter.model }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

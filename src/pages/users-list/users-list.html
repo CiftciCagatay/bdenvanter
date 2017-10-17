@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Kullanıcılar</ion-title>
+
+    <ion-buttons end>
+      <button (click)="refreshUsers()" ion-button icon-only>
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="searchString" (ionChange)="searchForUsers()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let user of users; let i = index">
+      <ion-item (click)="pushToUsersDetailsPage(user.u_id, i)">
+        <ion-label>{{ user.name }}</ion-label>
+      </ion-item>
+      
+      <ion-item-options>
+        <button (click)="openUserFormPage('update', user.u_id)" color="secondary" ion-button>
+          <ion-icon name="create"></ion-icon>
+          Düzenle
+        </button>
+        
+        <button (click)="showUserDeletionWarning(user.u_id, i)" color="danger" ion-button>
+          <ion-icon name="trash"></ion-icon>
+          Sil
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="getMoreUsers($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab bottom right>
+    <button color="danger" (click)="openNewUserFormPage()" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

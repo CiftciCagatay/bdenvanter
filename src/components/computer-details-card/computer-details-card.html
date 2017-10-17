@@ -1,0 +1,69 @@
+<ion-card>
+  <ion-card-header color="primary" ion-item>
+    <ion-icon name="desktop" item-start></ion-icon>
+    
+    <ion-label>Bilgisayar</ion-label>
+
+    <button (click)="openComputerFormPage()" ion-button clear icon-only item-end>
+      <ion-icon color="light" name="create"></ion-icon>
+    </button>
+
+    <button (click)="showComputerDeletionWarning()" ion-button clear icon-only item-end>
+      <ion-icon color="light" name="trash"></ion-icon>
+    </button>
+  </ion-card-header>
+
+  <ion-card-content style="margin-top: 5px">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>IP Numarası</ion-label>
+        <ion-label>{{ computer.ip_number }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tür</ion-label>
+        <ion-label>{{ computer.type }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>İşletim Sistemi</ion-label>
+        <ion-label>{{ computer.os }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mimari</ion-label>
+        <ion-label>{{ computer.arch }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>İşlemci</ion-label>
+        <ion-label>{{ computer.processor_name }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Monitor</ion-label>
+        <ion-label>{{ computer.monitor_type }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Switch</ion-label>
+        <ion-label>{{ computer.switch_connection }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Disk Türü</ion-label>
+        <ion-label>{{ computer.disc_type }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Disk Miktarı</ion-label>
+        <ion-label>{{ computer.disc_amount }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>RAM Miktarı</ion-label>
+        <ion-label>{{ computer.ram_amount }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

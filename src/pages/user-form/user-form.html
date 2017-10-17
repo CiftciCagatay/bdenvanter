@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button navPop ion-button>Vazgeç</button>
+    </ion-buttons>
+    <ion-title>{{ mode == 'update' ? 'Kullanıcı Düzenleme' : 'Yeni Kullanıcı' }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSaveButtonClicked()" ion-button>Kaydet</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>İsim Soyisim</ion-label>
+      <ion-input [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Departman</ion-label>
+      <ion-select [(ngModel)]="user.department">
+        <ion-option *ngFor="let department of userService.departments">{{ department }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Dahili</ion-label>
+      <ion-input [(ngModel)]="user.internal_code"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lokasyon</ion-label>
+      <ion-select [(ngModel)]="user.location">
+        <ion-option *ngFor="let location of userService.locations">{{ location }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Şehir</ion-label>
+      <ion-select [(ngModel)]="user.city">
+        <ion-option *ngFor="let city of cities.cities">{{ city }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>İlçe</ion-label>
+      <ion-input [(ngModel)]="user.district"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

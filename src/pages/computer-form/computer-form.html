@@ -1,0 +1,83 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button navPop ion-button>Vazgeç</button>
+    </ion-buttons>
+
+    <ion-title>{{ mode == 'update' ? 'Bilgisayar Düzenleme' : 'Yeni Bilgisayar' }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSaveButtonClicked()" ion-button>Kaydet</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>IP Numarası</ion-label>
+      <ion-input [(ngModel)]="computer.ip_number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tür</ion-label>
+      <ion-select [(ngModel)]="computer.type">
+        <ion-option *ngFor="let type of computerService.types">{{ type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>İşletim Sistemi</ion-label>
+      <ion-select [(ngModel)]="computer.os">
+        <ion-option *ngFor="let os of computerService.oses">{{ os}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mimari</ion-label>
+      <ion-select [(ngModel)]="computer.arch">
+        <ion-option *ngFor="let arch of computerService.archs">{{ arch}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>İşlemci</ion-label>
+      <ion-select [(ngModel)]="computer.processor_name">
+        <ion-option *ngFor="let processor of computerService.processors">{{ processor}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Monitor</ion-label>
+      <ion-select [(ngModel)]="computer.monitor_type">
+        <ion-option *ngFor="let monitor_type of computerService.monitorTypes">{{ monitor_type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Switch</ion-label>
+      <ion-select [(ngModel)]="computer.switch_connection">
+        <ion-option *ngFor="let switch of computerService.switches">{{ switch}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Disk Türü</ion-label>
+      <ion-select [(ngModel)]="computer.disc_type">
+        <ion-option *ngFor="let discType of computerService.discTypes">{{ discType }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Disk Miktarı</ion-label>
+      <ion-input [(ngModel)]="computer.disc_amount" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>RAM Miktarı</ion-label>
+      <ion-input [(ngModel)]="computer.ram_amount" type="number"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

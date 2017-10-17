@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-header color="primary" ion-item>
+    Son Etkinlikler
+    <button (click)="getActivities()" ion-button icon-only clear item-end>
+      <ion-icon color="light" name="refresh"></ion-icon>
+    </button>
+  </ion-card-header>
+
+  <ion-card-content no-padding>
+    <ion-list>
+      <ion-item *ngFor="let activity of activities">
+        <ion-icon name="cube" item-start></ion-icon>
+        <h3>{{ activity.title }}</h3>
+        <p style="word-break: normal; white-space: normal;">{{ activity.detail }}</p>
+        <p>{{ activity.date | formatDate }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

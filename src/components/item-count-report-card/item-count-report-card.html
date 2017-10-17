@@ -1,0 +1,36 @@
+<ion-card>
+  <ion-card-header color="primary" ion-item>
+    Envanter Özet
+  </ion-card-header>
+
+  <ion-card-content no-padding>
+    <ion-toolbar color="primary">
+      <ion-searchbar (ionChange)="getItemCountReport($event.value)"></ion-searchbar>
+    </ion-toolbar>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="desktop" item-start></ion-icon>
+        <h2>{{ data.computer_count }} adet</h2>
+        <h4>Bilgisayar</h4>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="print" item-start></ion-icon>
+        <h2>{{ data.printer_count }} adet</h2>
+        <h4>Yazıcı</h4>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="barcode" item-start></ion-icon>
+        <h2>{{ data.br_count }} adet</h2>
+        <h4>Barkod Okuyucu</h4>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="barcode" item-start></ion-icon>
+        <h2>{{ data.bp_count }} adet</h2>
+        <h4>Berkod Yazıcı</h4>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

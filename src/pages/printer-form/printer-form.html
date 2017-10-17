@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button navPop ion-button>Vazgeç</button>
+    </ion-buttons>
+
+    <ion-title>{{ mode == 'update' ? 'Yazıcı Düzenleme' : 'Yeni Yazıcı' }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSaveButtonClicked()" ion-button>Kaydet</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Tür</ion-label>
+      <ion-select [(ngModel)]="printer.type">
+        <ion-option *ngFor="let type of printerService.types">{{ type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Model</ion-label>
+      <ion-input [(ngModel)]="printer.model"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Durum</ion-label>
+      <ion-select [(ngModel)]="printer.state">
+        <ion-option *ngFor="let state of printerService.states">{{ state }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

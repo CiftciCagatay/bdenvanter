@@ -1,0 +1,42 @@
+<ion-card>
+  <ion-card-header color="primary" ion-item>
+    <ion-icon name="person" item-start></ion-icon>
+    Kullanıcı Bilgileri
+    <button (click)="openUserFormPage()" ion-button icon-only clear item-end>
+      <ion-icon color="light" name="create"></ion-icon>
+    </button>
+
+    <button (click)="showUserDeletionWarning()" ion-button icon-only clear item-end>
+      <ion-icon color="light" name="trash"></ion-icon>
+    </button>
+  </ion-card-header>
+
+  <ion-card-content style="margin-top: 5px">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>İsim Soyisim</ion-label>
+        <ion-label>{{ user.name }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Departman</ion-label>
+        <ion-label>{{ user.department }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dahili</ion-label>
+        <ion-label>{{ user.internal_code }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>İlçe/Şehir</ion-label>
+        <ion-label>{{ user.district }}/{{ user.city }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lokasyon</ion-label>
+        <ion-label>{{ user.location }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

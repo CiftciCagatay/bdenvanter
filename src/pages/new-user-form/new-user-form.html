@@ -1,0 +1,182 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button navPop ion-button>Vazgeç</button>
+    </ion-buttons>
+
+    <ion-title>Yeni Kullanıcı</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSaveButtonClicked()" ion-button>Kaydet</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header color="primary">
+      <ion-icon name="person" item-start></ion-icon>
+      Kullanıcı Bilgileri
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>İsim Soyisim</ion-label>
+      <ion-input [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Departman</ion-label>
+      <ion-select [(ngModel)]="user.department">
+        <ion-option *ngFor="let department of userService.departments | orderStrings">{{ department }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Dahili</ion-label>
+      <ion-input [(ngModel)]="user.internal_code"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lokasyon</ion-label>
+      <ion-select [(ngModel)]="user.location">
+        <ion-option *ngFor="let location of userService.locations | orderStrings">{{ location }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Şehir</ion-label>
+      <ion-select [(ngModel)]="user.city">
+        <ion-option *ngFor="let city of cities.cities">{{ city }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>İlçe</ion-label>
+      <ion-input [(ngModel)]="user.district"></ion-input>
+    </ion-item>
+
+    <ion-list-header color="primary">
+      <ion-icon name="desktop" item-start></ion-icon>
+      <ion-label>Bilgisayar</ion-label>
+      <ion-label style="text-align: right" item-end>Var</ion-label>
+      <ion-checkbox [(ngModel)]="hasComputer" item-end></ion-checkbox>
+    </ion-list-header>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>IP Numarası</ion-label>
+      <ion-input [(ngModel)]="computer.ip_number"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Tür</ion-label>
+      <ion-select [(ngModel)]="computer.type">
+        <ion-option *ngFor="let type of computerService.types">{{ type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>İşletim Sistemi</ion-label>
+      <ion-select [(ngModel)]="computer.os">
+        <ion-option *ngFor="let os of computerService.oses">{{ os}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Mimari</ion-label>
+      <ion-select [(ngModel)]="computer.arch">
+        <ion-option *ngFor="let arch of computerService.archs">{{ arch}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>İşlemci</ion-label>
+      <ion-select [(ngModel)]="computer.processor_name">
+        <ion-option *ngFor="let processor of computerService.processors">{{ processor}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Monitor</ion-label>
+      <ion-select [(ngModel)]="computer.monitor_type">
+        <ion-option *ngFor="let monitor_type of computerService.monitorTypes">{{ monitor_type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Switch</ion-label>
+      <ion-select [(ngModel)]="computer.switch_connection">
+        <ion-option *ngFor="let switch of computerService.switches">{{ switch}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Disk Türü</ion-label>
+      <ion-select [(ngModel)]="computer.disc_type">
+        <ion-option *ngFor="let discType of computerService.discTypes">{{ discType }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>Disk Miktarı</ion-label>
+      <ion-input [(ngModel)]="computer.disc_amount" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="hasComputer">
+      <ion-label>RAM Miktarı</ion-label>
+      <ion-input [(ngModel)]="computer.ram_amount" type="number"></ion-input>
+    </ion-item>
+
+    <ion-list-header color="primary">
+      <ion-icon name="print" item-start></ion-icon>
+      <ion-label>Yazıcı</ion-label>
+      <ion-label style="text-align: right" item-end>Var</ion-label>
+      <ion-checkbox [(ngModel)]="hasPrinter" item-end></ion-checkbox>
+    </ion-list-header>
+
+    <ion-item *ngIf="hasPrinter">
+      <ion-label>Tür</ion-label>
+      <ion-select [(ngModel)]="printer.type">
+        <ion-option *ngFor="let type of printerService.types">{{ type }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasPrinter">
+      <ion-label>Model</ion-label>
+      <ion-input [(ngModel)]="printer.model"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="hasPrinter">
+      <ion-label>Durum</ion-label>
+      <ion-select [(ngModel)]="printer.state">
+        <ion-option *ngFor="let state of printerService.states">{{ state }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list-header color="primary">
+      <ion-icon name="barcode" item-start></ion-icon>
+      <ion-label>Barkod Okuyucu</ion-label>
+      <ion-label style="text-align: right" item-end>Var</ion-label>
+      <ion-checkbox [(ngModel)]="hasBarcodeReader" item-end></ion-checkbox>
+    </ion-list-header>
+
+    <ion-item *ngIf="hasBarcodeReader">
+      <ion-label>Model</ion-label>
+      <ion-input [(ngModel)]="barcodeReader.model"></ion-input>
+    </ion-item>
+
+    <ion-list-header color="primary">
+      <ion-icon name="barcode" item-start></ion-icon>
+      <ion-label>Barkod Yazıcı</ion-label>
+      <ion-label style="text-align: right" item-end>Var</ion-label>
+      <ion-checkbox [(ngModel)]="hasBarcodePrinter" item-end></ion-checkbox>
+    </ion-list-header>
+
+    <ion-item *ngIf="hasBarcodePrinter">
+      <ion-label>Model</ion-label>
+      <ion-input [(ngModel)]="barcodePrinter.model"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

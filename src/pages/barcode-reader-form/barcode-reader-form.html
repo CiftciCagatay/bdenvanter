@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button navPop ion-button>Vazgeç</button>
+    </ion-buttons>
+
+    <ion-title>{{ mode == 'update' ? 'B.Okuyucu Düzenleme' : 'Yeni B.Okuyucu' }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSaveButtonClicked()" ion-button>Kaydet</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Model</ion-label>
+      <ion-input [(ngModel)]="barcodeReader.model"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
